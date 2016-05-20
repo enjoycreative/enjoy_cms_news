@@ -1,0 +1,30 @@
+class <%= camelcased_class_name %> < Enjoy::News::Category
+
+  def image_styles
+    {}
+  end
+
+  def image_jcrop_options
+    {}
+  end
+
+  def news_class
+    <%= mews_class_name %>
+  end
+  def routes_namespace
+    :main_app # or nil
+  end
+
+
+  ############# rails_admin ##############
+  def self.rails_admin_add_fields
+    {}
+  end
+
+  def self.rails_admin_add_config(config)
+  end
+
+  rails_admin(&Enjoy::News::Admin::Category.config(rails_admin_add_fields) { |config|
+    rails_admin_add_config(config)
+  })
+end

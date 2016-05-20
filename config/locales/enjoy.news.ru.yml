@@ -1,0 +1,13 @@
+ru:
+  enjoy:
+    news: 'Новости'
+
+  mongoid: &mongoid
+    models:
+      enjoy/news/news: Новости
+      enjoy/news/image: Фотогалерея новости
+      enjoy/news/category: Разделы
+    attributes:
+
+  activerecord:
+    <<: *mongoid
