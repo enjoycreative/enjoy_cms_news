@@ -38,6 +38,11 @@ Enjoy.configure do |config|
     model: Enjoy::News::News,
     actions: _actions
   }
+  config.ability_admin_config << {
+    method: :can,
+    model: Enjoy::News::News,
+    actions: :manage
+  }
 
   _actions = [:new, :edit, :update, :nested_set, :multiple_file_upload, :sort_embedded]
   if Enjoy::News.active_record?
@@ -49,23 +54,19 @@ Enjoy.configure do |config|
     model: Enjoy::News::Category,
     actions: _actions
   }
-  if Enjoy::Catalog.active_record?
-    config.ability_manager_config << {
-      method: :can,
-      model: Enjoy::News::Image,
-      actions: _actions
-    }
-  end
-end
-
-if defined?(RailsAdmin)
-  RailsAdmin.config do |config|
-    config.excluded_models ||= []
-    if Enjoy::News.mongoid?
-      config.excluded_models << [
-        'Enjoy::News::Image'
-      ]
-    end
-    config.excluded_models.flatten!
-  end
+  config.ability_manager_config << {
+    method: :can,
+    model: Enjoy::News::Image,
+    actions: _actions
+  }
+  config.ability_admin_config << {
+    method: :can,
+    model: Enjoy::News::Category,
+    actions: :manage
+  }
+  config.ability_admin_config << {
+    method: :can,
+    model: Enjoy::News::Image,
+    actions: :manage
+  }
 end

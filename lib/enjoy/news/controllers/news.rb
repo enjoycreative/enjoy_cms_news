@@ -7,7 +7,7 @@ module Enjoy::News
         @news = news_class.enabled.after_now.by_date
 
         unless Enjoy::News.config.news_per_page.nil?
-          @news = @news.page(params[:page])
+          @news = @news.page(params[:page]).per(Enjoy::News.config.news_per_page)
         end
       end
 
