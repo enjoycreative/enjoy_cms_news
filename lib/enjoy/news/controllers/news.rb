@@ -9,6 +9,8 @@ module Enjoy::News
         unless Enjoy::News.config.news_per_page.nil?
           @news = @news.page(params[:page]).per(Enjoy::News.config.news_per_page)
         end
+
+        after_initialize
       end
 
       def show
@@ -18,6 +20,8 @@ module Enjoy::News
           redirect_to @news, status_code: 301
           return true
         end
+
+        after_initialize
       end
 
       private
@@ -33,6 +37,9 @@ module Enjoy::News
         else
           super
         end
+      end
+
+      def after_initialize
       end
     end
   end

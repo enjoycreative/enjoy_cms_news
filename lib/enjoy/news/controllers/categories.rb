@@ -6,6 +6,8 @@ module Enjoy::News
       def index
         @categories = category_class.enabled.sorted.to_a
         @root_catalog = category_class.enabled.roots.sorted.all.to_a
+
+        after_initialize
       end
 
       def show
@@ -18,6 +20,8 @@ module Enjoy::News
 
         @children = @category.children.enabled.sorted.all.to_a
         @news = @category.news.enabled.sorted.all.to_a
+
+        after_initialize
       end
 
       def page_title
@@ -34,6 +38,9 @@ module Enjoy::News
       end
       def news_class
         Enjoy::News::News
+      end
+
+      def after_initialize
       end
 
       # def index_crumbs
