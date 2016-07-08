@@ -62,7 +62,7 @@ module Enjoy::News
   end
 
   module Controllers
-    autoload :Items,            'enjoy/news/controllers/news'
+    autoload :News,             'enjoy/news/controllers/news'
     autoload :Categories,       'enjoy/news/controllers/categories'
   end
 
