@@ -32,7 +32,7 @@ module Enjoy::News
         Enjoy::News::News
       end
       def page_title
-        if @news.class.name == model.name
+        if @news.class == news_class
           @news.page_title
         else
           super
