@@ -28,9 +28,7 @@ module Enjoy::News
           if Enjoy::News.config.gallery_support
             group :image do
               active false
-              field :image, :jcrop do
-                jcrop_options :image_jcrop_options
-              end
+              field :image, :enjoy_image
               field :images
             end
           end
@@ -44,18 +42,7 @@ module Enjoy::News
           end
           group :URL do
             active false
-            field :slugs, :enum do
-              searchable true
-              enum_method do
-                :slugs
-              end
-              visible do
-                bindings[:view].current_user.admin?
-              end
-              multiple do
-                true
-              end
-            end
+            field :slugs, :enjoy_slugs
             field :text_slug do
               searchable true
             end
