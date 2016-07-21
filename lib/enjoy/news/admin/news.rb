@@ -78,6 +78,20 @@ module Enjoy::News
             end
           end
 
+          sort_embedded(
+              {
+                  fields: [:images]
+              }
+          )
+
+          if defined?(RailsAdminMultipleFileUpload)
+            multiple_file_upload(
+                {
+                    fields: [:images]
+                }
+            )
+          end
+
           if block_given?
             yield self
           end
