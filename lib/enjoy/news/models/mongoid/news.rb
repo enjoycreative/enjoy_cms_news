@@ -22,16 +22,9 @@ module Enjoy::News
 
           if Enjoy::News.config.gallery_support
             embeds_many :images, cascade_callbacks: true, class_name: "Enjoy::News::Image"
+            accepts_nested_attributes_for :images, allow_destroy: true
           end
 
-        end
-
-        def image_styles
-          Enjoy::News.configuration.news_image_styles
-        end
-
-        def image_jcrop_options
-          {}
         end
       end
     end

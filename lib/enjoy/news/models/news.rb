@@ -32,9 +32,7 @@ module Enjoy::News
         end
 
         if Enjoy::News.config.gallery_support and Enjoy::News.configuration.news_image_styles
-          enjoy_cms_attached_file(:image,
-                    styles: lambda { |attachment| attachment.instance.image_styles }
-          )
+          enjoy_cms_attached_file(:image)
         end
 
         alias :news_categories :categories
@@ -47,10 +45,6 @@ module Enjoy::News
 
       def image_styles
         Enjoy::News.config.news_image_styles
-      end
-
-      def image_jcrop_options
-        {}
       end
     end
   end

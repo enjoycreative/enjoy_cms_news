@@ -30,9 +30,7 @@ module Enjoy::News
         manual_slug :name
 
         if Enjoy::News.config.gallery_support and Enjoy::News.configuration.category_image_styles
-          enjoy_cms_attached_file(:image,
-                    styles: lambda { |attachment| attachment.instance.image_styles }
-          )
+          enjoy_cms_attached_file(:image)
         end
 
         acts_as_nested_set
@@ -48,10 +46,6 @@ module Enjoy::News
 
       def image_styles
         Enjoy::News.configuration.category_image_styles
-      end
-
-      def image_jcrop_options
-        {}
       end
 
       def page_title

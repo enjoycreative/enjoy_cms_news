@@ -11,10 +11,6 @@ module Enjoy::News
       def image_styles
         Enjoy::News.configuration.images_image_styles
       end
-
-      def image_jcrop_options
-        {}
-      end
     end
   end
 end
